@@ -1,5 +1,11 @@
-## Hi there 👋
+### 👋 Hi there, I'm Haejin Park!
+I am an aspiring **Embedded Software Engineer** preparing for a career in the automotive industry.
 
+- 🔭 I’m currently working on **PointPillars Implementation with C++**
+- 📚 I’m currently learning **Embedded Systems, ROS2, and Linux**
+- 🛠️ Tech Stack: **C++, Python, Git, Docker**
+- 🎓 **Kyungpook National University (KNU)**
+- 
 <!--
 **steppenhj/steppenhj** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
