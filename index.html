@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO | Park Hae-jin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. Global Variables (Dark Gray Theme) --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-hover: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --accent: #d4d4d8;
+            --accent-point: #3b82f6;
+            
+            /* [수정] 네비게이션 높이를 늘려서 여유 공간 확보 */
+            --nav-height: 90px; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. Navigation Bar (수정됨) --- */
+        .navbar {
+            position: fixed;
+            top: 0; width: 100%;
+            height: var(--nav-height);
+            background: rgba(18, 18, 18, 0.95); /* 가독성을 위해 불투명도 약간 상향 */
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; items-center;
+            padding: 0 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            
+            /* [수정] 상단 패딩을 주어 글자를 아래로 살짝 내림 */
+            padding-top: 15px; 
+        }
+
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-main); }
+        .logo span { color: var(--text-muted); font-weight: 400; }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--text-main); }
+
+        /* --- 3. Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at 50% 50%, #1e1e1e 0%, #121212 70%);
+        }
+
+        .hero h2 {
+            font-size: 1.2rem; color: var(--accent-point);
+            margin-bottom: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem; font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1rem; color: var(--text-muted);
+            max-width: 600px; margin-bottom: 40px;
+        }
+
+        .btn-group { display: flex; gap: 15px; }
+
+        .btn {
+            padding: 14px 35px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            border: 1px solid var(--text-main);
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-secondary:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+
+        /* --- 4. Section Styling --- */
+        section { padding: 120px 10%; }
+        .section-header { margin-bottom: 80px; }
+        .section-title {
+            font-size: 2.2rem; font-weight: 700; margin-bottom: 15px;
+        }
+        .section-desc { color: var(--text-muted); max-width: 500px; }
+
+        /* --- 5. Featured Project --- */
+        .featured-project {
+            display: grid; grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px; align-items: center;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 2px;
+            margin-bottom: 120px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .featured-img {
+            width: 100%; height: 100%; min-height: 450px;
+            background: #000;
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .img-placeholder {
+            width: 100%; height: 100%;
+            background: linear-gradient(45deg, #1a1a1a 25%, #222 25%, #222 50%, #1a1a1a 50%, #1a1a1a 75%, #222 75%, #222 100%);
+            background-size: 20px 20px;
+            display: flex; justify-content: center; align-items: center;
+            flex-direction: column; color: #444;
+        }
+
+        .featured-content { padding: 50px; }
+        
+        .tag-container { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.75rem; padding: 6px 14px;
+            background: #2a2a2a; color: var(--text-main);
+            border: 1px solid #333; letter-spacing: 0.5px;
+        }
+
+        .featured-content h3 { font-size: 2.2rem; margin-bottom: 20px; color: var(--text-main); }
+        .featured-content p { color: var(--text-muted); margin-bottom: 35px; line-height: 1.7; }
+
+        .project-links { display: flex; gap: 20px; align-items: center; }
+        .link-item { font-size: 1.1rem; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+        .link-item:hover { color: var(--accent-point); }
+
+        /* --- 6. Other Projects Grid --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            padding: 35px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, background 0.3s;
+            display: flex; flex-direction: column; height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-7px);
+            background: var(--bg-hover);
+            border-color: rgba(255,255,255,0.1);
+        }
+        
+        .card-header { display: flex; justify-content: space-between; margin-bottom: 25px; align-items: center; }
+        .folder-icon { font-size: 2.5rem; color: var(--accent-point); opacity: 0.8; }
+        .git-icon { font-size: 1.4rem; color: var(--text-muted); }
+        .git-icon:hover { color: var(--text-main); }
+
+        .project-card h4 { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); }
+        .project-card p { font-size: 0.95rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 25px; }
+        
+        .card-tags { font-size: 0.8rem; font-family: monospace; color: #666; display: flex; gap: 15px; }
+
+        /* --- 7. Footer --- */
+        footer {
+            background: #0d0d0d;
+            padding: 80px 10%;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+        .footer-socials { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
+        .footer-socials a { font-size: 1.5rem; color: var(--text-muted); }
+        .footer-socials a:hover { color: var(--text-main); }
+        .footer-copy { color: #555; font-size: 0.9rem; }
+
+        /* --- Animation --- */
+        .hidden { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
+        .show { opacity: 1; transform: translateY(0); }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .featured-project { grid-template-columns: 1fr; }
+            .nav-links { display: none; } 
+            section { padding: 80px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Haejin<span>.Park</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hidden">
+            <h2>Hardware & Software Engineer</h2>
+            <h1>Park Hae-jin</h1>
+            <p>
+                임베디드 시스템의 정밀함과 웹 기술의 유연함을 연결합니다.<br>
+                현재 라즈베리파이 기반의 자율주행 플랫폼을 설계하고 있습니다.
+            </p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="https://github.com/steppenhj" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header hidden">
+            <h2 class="section-title">Featured Project</h2>
+            <p class="section-desc">현재 진행 중인 메인 프로젝트입니다. 하드웨어 설계부터 소프트웨어 구현까지 전 과정을 다룹니다.</p>
+        </div>
+
+        <div class="featured-project hidden">
+            <div class="featured-img">
+                <div class="img-placeholder">
+                    <i class="fas fa-car mb-3"></i>
+                    <span>Driving Demo GIF</span>
+                </div>
+            </div>
+            <div class="featured-content">
+                <div class="tag-container">
+                    <span class="tag">Raspberry Pi 5</span>
+                    <span class="tag">Python & C++</span>
+                    <span class="tag">WebSocket</span>
+                    <span class="tag">PCA9685</span>
+                </div>
+                <h3>Neuro-Drive RC Car</h3>
+                <p>
+                    라즈베리파이 5와 Ackermann Steering 메커니즘을 적용한 자율주행 RC카 프로젝트입니다.
+                    단순한 조종을 넘어, <strong>하이브리드 아키텍처(Python+C++)</strong>를 통해 웹 기반 실시간 원격 제어와 초저지연 모터 제어를 동시에 구현했습니다.
+                    독립 전원 시스템 설계로 하드웨어 안정성을 확보했습니다.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/steppenhj/Neuro-Drive-CPP" target="_blank" class="link-item">
+                        <i class="fab fa-github"></i> Visit Repository
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header hidden" style="margin-top: 150px;">
+            <h2 class="section-title">Other Projects</h2>
+        </div>
+        
+        <div class="project-grid">
+            
+            <div class="project-card hidden">
+                <div class="card-header">
+                    <i class="far fa-folder folder-icon"></i>
+                    <a href="#" class="git-icon"><i class="fab fa-github"></i></a>
+                </div>
+                <h4>Web Controller Interface</h4>
+                <p>RC카 제어를 위한 모바일 최적화 컨트롤러입니다. Touch Event 처리와 WebSocket 통신 최적화를 통해 Native App 수준의 반응 속도를 구현했습니다.</p>
+                <div class="card-tags">
+                    <span>JavaScript</span>
+                    <span>Flask</span>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="card-header">
+                    <i class="far fa-folder folder-icon"></i>
+                    <a href="#" class="git-icon"><i class="fab fa-github"></i></a>
+                </div>
+                <h4>Portfolio Website</h4>
+                <p>현재 보고 계신 포트폴리오 사이트입니다. 외부 프레임워크 없이 순수 HTML/CSS/JS로 다크 모드 디자인과 반응형 UI를 구현했습니다.</p>
+                <div class="card-tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                </div>
+            </div>
+
+             <div class="project-card hidden">
+                <div class="card-header">
+                    <i class="far fa-folder folder-icon"></i>
+                    <a href="#" class="git-icon"><i class="fab fa-github"></i></a>
+                </div>
+                <h4>Algorithm Archive</h4>
+                <p>자율주행 알고리즘 학습을 위한 자료구조 및 알고리즘 문제 풀이 저장소입니다.</p>
+                <div class="card-tags">
+                    <span>C++</span>
+                    <span>Python</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-socials">
+            <a href="https://github.com/steppenhj" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="footer-copy">© 2024 Park Hae-jin. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll Animation Logic
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
