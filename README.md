@@ -1,4 +1,1 @@
-# 👋I'm Haejin Park!
-
-## 🎓 Education
-* **Kyungpook National University (KNU)**
+박해진입니다.
