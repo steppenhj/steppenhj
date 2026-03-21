@@ -1,5 +1,4 @@
-# 박해진입니다
-# Park Haejin
+# 박해진 | Park Haejin 입니다.
 
 ---
 
