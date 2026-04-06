@@ -1,17 +1,28 @@
-# 박해진 | Park Haejin 입니다.
+# 박해진 | Park Haejin
 
 ---
 
 ### 💻 Tech Stack
-* **Languages:** C++, Python, C
-* **Hardware & Protocols:** STM32, Raspberry Pi 5, CAN, UART
+
+**Languages**
+* ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white) — 하드웨어 제어 및 알고리즘 구현
+* ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+
+**Embedded & Hardware**
+* **MCU/SBC:** `STM32`, `Raspberry Pi 5`, `Arduino`
+* **Protocols:** `CAN`, `UART`, `I2C`, `SPI`
+* **OS/Environment:** `Linux (Ubuntu)`, `Embedded Linux`
+
+**Tools & Others**
+* `Git / GitHub`, `VS Code`, `STM32CubeIDE`
+* `AWS Certified Cloud Practitioner`
 
 ---
 
-### 🔗 Portfolio
-Check out my projects and experience here:
-👉 **[https://steppenhj.github.io](https://steppenhj.github.io)**
+### 🔗 Portfolio Web
+👉 **[steppenhj.github.io](https://steppenhj.github.io)**
 
 ---
+
 ### 📫 Contact
-hermann8hesse@gmail.com
+* **Email:** [hermann8hesse@gmail.com](mailto:hermann8hesse@gmail.com)
