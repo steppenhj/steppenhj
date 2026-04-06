@@ -10,7 +10,8 @@
 * ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 
 **Embedded & Hardware**
-* **MCU/SBC:** `STM32`, `Raspberry Pi 5`, `Arduino`
+* **MCU/SBC:** `STM32`, `Raspberry Pi 5`
+* **Real-Time OS:** `FreeRTOS` (Task Scheduling & Multi-threading)
 * **Protocols:** `CAN`, `UART`, `I2C`, `SPI`
 * **OS/Environment:** `Linux (Ubuntu)`, `Embedded Linux`
 
