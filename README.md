@@ -10,6 +10,8 @@
 
 ### 🔗 Portfolio
 Check out my projects and experience here:
-👉 **[https://steppenhi.github.io](https://steppenhj.github.io)**
+👉 **[https://steppenhj.github.io](https://steppenhj.github.io)**
 
 ---
+### 📫 Contact
+hermann8hesse@gmail.com
