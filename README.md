@@ -2,8 +2,6 @@
 
 ---
 
-### 💻 Tech Stack
-
 **Languages**
 * ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white)
 * ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
@@ -20,11 +18,7 @@
 * `AWS Certified Cloud Practitioner`
 
 ---
-
-### 🔗 Portfolio Web
 👉 **[steppenhj.github.io](https://steppenhj.github.io)**
 
 ---
-
-### 📫 Contact
 * **Email:** [hermann8hesse@gmail.com](mailto:hermann8hesse@gmail.com)
