@@ -7,7 +7,7 @@
 
 **Embedded & Hardware**
 * **MCU/SBC:** `STM32`, `Raspberry Pi 5`
-* **Real-Time OS:** `FreeRTOS` (Task Scheduling & Multi-threading)
+* **Real-Time OS:** `FreeRTOS` 
 * **Protocols:** `CAN`, `UART`, `I2C`, `SPI`
 * **OS/Environment:** `Linux (Ubuntu)`, `Embedded Linux`
 
