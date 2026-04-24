@@ -15,9 +15,6 @@
 * `Git / GitHub`, `VS Code`, `STM32CubeIDE`
 * `AWS Certified Cloud Practitioner`
 
----
-### 🔗 Portfolio
-👉 **[steppenhj.github.io](https://steppenhj.github.io)**
 
 ---
 * **Email:** [hermann8hesse@gmail.com](mailto:hermann8hesse@gmail.com)
