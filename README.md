@@ -10,7 +10,7 @@
 ### Featured Projects
 
 #### 🚗 [Neuro-Drive-CPP](https://github.com/steppenhj/Neuro-Drive-CPP) — Distributed UGV Control System
-RPi5(Linux) + STM32(FreeRTOS) 이종 프로세서 분산 제어 플랫폼. Ackermann 조향 RC카에서 soft real-time과 hard real-time을 물리적으로 분리하고, 둘 사이의 협력·페일세이프를 설계.
+RPi5(Linux) + STM32(FreeRTOS) 이종 프로세서 분산 제어 플랫폼. Ackermann 조향 RC카에서 soft real-time과 hard real-time을 물리적으로 분리하고, 둘 사이의 협력·Fail-Safe를 설계.
 
 - **Distributed Architecture** — RPi5는 네트워킹·모드 관리, STM32는 100Hz 모터 제어. 책임 분리로 어느 한쪽이 실패해도 시스템이 무너지지 않음
 - **FreeRTOS Task Design** — UART ISR + Queue, Motor/Encoder/Safety Task, mutex 보호 공유 상태
