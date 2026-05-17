@@ -2,8 +2,8 @@
 ---
 
 ### Featured Projects
-* **Project 1** — RTOS + UART · [GitHub](#)
-* **Project 2** — CAN + SPI · [GitHub](#)
+* **Project 1** — RTOS + UART · [GitHub](https://github.com/steppenhj/Neuro-Drive-CPP)
+* **Project 2** — CAN + SPI · [GitHub](https://github.com/steppenhj/multi-mcu-can)
 
 ---
 
