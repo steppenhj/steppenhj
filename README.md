@@ -3,8 +3,6 @@
 > 경북대학교  
 > 임베디드 SW
 
-📧 [hermann8hesse@gmail.com](mailto:hermann8hesse@gmail.com)
-
 ---
 
 ### Featured Projects
@@ -28,7 +26,7 @@ Neuro-Drive Phase 6를 독립 레포로 분리해, 액추에이터 계층을 걷
 - **단계별 검증 방법론** — Phase 0(전원·GND) → Loopback → 2노드 → 3노드 → 스케줄링 → Bus-off 복구. 각 Phase가 독립 빌드·회귀 테스트 가능
 - **Roadmap** — CAN-FD, ISO-TP, UDS 서비스 구현
 
-`C` `STM32 HAL` `bxCAN` `MCP2515` `SocketCAN` `Python`
+`C` `STM32 HAL` `bxCAN` `MCP2515` `SocketCAN`
 
 ---
 
