@@ -47,7 +47,7 @@ Neuro-Drive Phase 6를 독립 레포로 분리해, 액추에이터 계층을 걷
 `STM32CubeIDE` · `VS Code` · `Git / GitHub` · `IBM Rhapsody` · `StarUML`
 
 **Certifications**  
-`AWS Certified Cloud Practitioner (2024–2026)`
+`AWS Certified Cloud Practitioner (2025)`
 
 ---
 
