@@ -35,11 +35,6 @@ Neuro-Drive의 CAN 단계를 떼어내 버스와 프로토콜만 다룬 프로�
 
 `C` `STM32 HAL` `bxCAN` `MCP2515` `SPI`
 
-### 그 밖에
-- [Scythe](https://github.com/steppenhj/Scythe) — 할아버지 땅의 풀을 벨 궤도 제초 로봇. 부품을 사기 전에 사진으로 현장 지형을 만들고 MuJoCo로 구성을 비교하고 있습니다.
-- [TobaccoBug](https://github.com/steppenhj/TobaccoBug) — 연구실 천적 곤충(담배장님노린재) 사육 기록·경고 웹 (Flask · SQLite)
-- [linux-system-programming](https://github.com/steppenhj/linux-system-programming) — who · cp · ls를 C로 다시 구현하며 공부한 기록
-
 ## 자격
 정보처리기사(2026) · AWS Certified Cloud Practitioner(2025)
 
