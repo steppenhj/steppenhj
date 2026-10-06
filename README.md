@@ -1,54 +1,47 @@
-# 박해진 | Park Haejin
+# 박해진 · Park Haejin
 
-> 경북대학교  
-> 임베디드 SW
+경북대학교 응용생물학 · 컴퓨터학부 인공지능컴퓨팅(복수전공) · 2027년 2월 졸업 예정
+임베디드 SW를 공부하고 있습니다. MCU 펌웨어와 임베디드 리눅스, 두 프로세서 사이의 통신과 안전 정지를 주로 다룹니다.
 
----
+## 프로젝트
 
-### Featured Projects
+### [Neuro-Drive](https://github.com/steppenhj/Neuro-Drive) — RPi 5 + STM32 분산 제어 RC카
+라즈베리파이 5(Linux)가 웹 조종·네트워크·모드 관리를, STM32(FreeRTOS)가 모터 제어와 안전 정지를 맡는 Ackermann 조향 RC카입니다.
 
-#### 🚗 [Neuro-Drive-CPP](https://github.com/steppenhj/Neuro-Drive-CPP) — Distributed UGV Control System
-RPi5(Linux) + STM32(FreeRTOS) 이종 프로세서 분산 제어 플랫폼. Ackermann 조향 RC카에서 soft real-time과 hard real-time을 물리적으로 분리하고, 둘 사이의 협력·Fail-Safe를 설계.
+- RPi 5 단독 제어(I2C · PCA9685)로 시작했지만 리눅스 유저 공간에서는 제어 주기를 보장할 수 없어 STM32를 분리했습니다. 모터 태스크는 `osDelayUntil` 로 10ms 주기를 고정했습니다.
+- 통신이 500ms 끊기면 정지합니다. 같은 감시를 STM32 태스크와 호스트 C++ 코어 두 층에 뒀습니다.
+- Return-to-Home(왔던 길 되돌아오기)을 붙이자, 복귀 중 조종 명령이 없는 구간을 워치독이 통신 두절로 오인했습니다. 복귀 중에는 keep-alive를 보내 '명령 없음'과 '링크 두절'을 갈랐습니다.
+- UART로 펌웨어를 바꾸는 부트로더를 직접 짰습니다. CRC를 통과한 이미지에만 유효 표식을 남기고, 부팅 때 표식과 CRC를 다시 확인해 맞을 때만 앱으로 넘어갑니다. 전송을 중간에 끊어도 반쯤 쓴 이미지로 넘어가지 않는 것을 보드에서 확인했습니다. 단일 슬롯이라 롤백은 없습니다.
+- F446RE로 옮기다 조향 서보가 탔습니다. 석 달 뒤 커밋 이력을 거슬러 올라가 모터와 서보의 출력 타이머가 뒤바뀐 편집을 찾았고, 분석을 README에 남겼습니다.
+- IBM Rhapsody·StarUML로 유스케이스·클래스·시퀀스·상태차트를 그렸습니다.
 
-- **왜 분산인가** — Phase 1은 RPi5 단독 제어(I2C 모터 드라이버)였으나 제어 주기 편차로 hard real-time 확보가 어려웠고, 이를 계기로 STM32를 분리해 100Hz 모터 제어를 전담시킴
-- **Distributed Architecture** — RPi5는 네트워킹·모드 관리, STM32는 100Hz 모터 제어 + 500ms 워치독. 링크가 끊기면 **fail-stop(안전 정지)으로 수렴**하도록 설계
-- **FreeRTOS Task Design** — UART ISR → Queue → Motor/Encoder/Safety Task. 상태를 공유·잠그는 대신 **메시지 큐로 전달해 경쟁 자체를 줄이는** 구조
-- **OTA Firmware Update** — 커스텀 부트로더, CRC 핸드셰이크, 섹터 단위 Flash 관리
-- **Return-to-Home + Watchdog** — RTH 중 명령 공백을 워치독이 통신두절로 오인하는 문제를 Keep-Alive로 해결('명령 없음'과 '링크 두절'을 구분), 8B → 12B 프로토콜 확장
-- **Troubleshooting** — MCU 이식 중 서보·모터 드라이버 소손. 코드 내부는 일관돼 있었기에 원인은 **핀·타이머 설정과 코드의 대응 관계**에 있었고, 설정 파일과 커밋 이력을 대조해 출력 타이머가 뒤바뀐 것을 특정
-- **MBSE Documentation** — IBM Rhapsody / StarUML로 UseCase·Class·Sequence·Statechart 일관 모델링
+`C` `C++17` `FreeRTOS` `STM32F411RE` `STM32F446RE` `Raspberry Pi 5` `UART` `UDP` `I2C`
 
-`C++17` `C` `FreeRTOS` `STM32` `Raspberry Pi 5` `UART` `UDP` `WebSocket` `I2C`
+### [rpi5-camera-bsp](https://github.com/steppenhj/rpi5-camera-bsp) — 카메라를 커널 단부터 다시 올리기
+라즈베리파이 5 카메라 모듈 3(IMX708)을 자동 인식 없이, 직접 쓴 디바이스 트리 오버레이와 직접 빌드한 센서 드라이버로 다시 올렸습니다. 사진을 찍을 때 일어나는 모드 전환 시간을 재서 줄였습니다.
 
-#### 🔗 [multi-mcu-can](https://github.com/steppenhj/multi-mcu-can) — CAN 2.0 Multi-MCU Communication
-Neuro-Drive Phase 6를 독립 레포로 분리해, 액추에이터 계층을 걷어내고 **버스·프로토콜·검증 규율** 자체에 집중한 후속 프로젝트.
+- 모드 전환 1회 75.1ms → 45.7ms(전원 관리 수정 백포트) → 14.3ms(카메라 I2C 100 → 400kHz)
+- 드라이버 안에서 `ktime`으로 쟀고, 단계별로 20 · 10 · 25회 평균입니다.
 
-- **2-Node CAN 2.0 Bus (검증 완료)** — STM32F446RE(native bxCAN) ↔ STM32F411RE(**bxCAN 미탑재 → MCP2515/SPI**), 500kbps, 120Ω 양단 종단. 양방향 동기 수신·에러 플래그 0 확인
-- **CAN ID 우선순위 설계** — Heartbeat(0x010~) / Status(0x100~) / Diagnostic(0x7E0~)으로 대역·진단 분리
-- **단계별 검증 방법론** — Phase 0(전원·GND) → Loopback → 2노드 순으로 한 번에 한 층만 올리고, 이전 층이 검증되기 전엔 다음 층을 쌓지 않음
-- **Roadmap** — RPi5 게이트웨이 노드(Phase 3, 호환성 이슈로 보류 중), CAN-FD, ISO-TP, UDS 서비스
+`C` `Linux kernel module` `Device Tree` `I2C`
+
+### [multi-mcu-can](https://github.com/steppenhj/multi-mcu-can) — STM32 두 노드 CAN 2.0 통신
+Neuro-Drive의 CAN 단계를 떼어내 버스와 프로토콜만 다룬 프로젝트입니다.
+
+- F446RE(내장 bxCAN)와 F411RE(bxCAN이 없어 SPI로 MCP2515)를 500kbps 한 버스에 묶어 하트비트를 서로 주고받았습니다. 양 끝 120Ω 종단.
+- 500kbps는 자동차에서 흔히 쓰는 속도이면서, 두 보드 클럭(45MHz · 8MHz)에서 모두 오차 없이 나눠떨어져서 골랐습니다.
+- 전원·GND → 루프백 → 2노드 순서로, 아래 단계가 확인되기 전엔 다음 단계를 올리지 않았습니다.
+- RPi 5를 셋째 노드로 붙이는 단계는 MCP2515 모듈의 5V 출력이 RPi 3.3V GPIO와 맞지 않아 보류 중입니다.
 
 `C` `STM32 HAL` `bxCAN` `MCP2515` `SPI`
 
----
+### 그 밖에
+- [Scythe](https://github.com/steppenhj/Scythe) — 할아버지 땅의 풀을 벨 궤도 제초 로봇. 부품을 사기 전에 사진으로 현장 지형을 만들고 MuJoCo로 구성을 비교하고 있습니다.
+- [TobaccoBug](https://github.com/steppenhj/TobaccoBug) — 연구실 천적 곤충(담배장님노린재) 사육 기록·경고 웹 (Flask · SQLite)
+- [linux-system-programming](https://github.com/steppenhj/linux-system-programming) — who · cp · ls를 C로 다시 구현하며 공부한 기록
 
-### Tech Stack
+## 자격
+정보처리기사(2026) · AWS Certified Cloud Practitioner(2025)
 
-**Languages**  
-![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-
-**Embedded & Real-Time**
-- **MCU / SBC** — `STM32F411RE` `STM32F446RE` `Raspberry Pi 5`
-- **RTOS** — `FreeRTOS` (Task / ISR / Queue)
-- **Protocols** — `CAN 2.0` `UART` `SPI` `I2C` `UDP` `WebSocket`
-- **OS** — `Linux (Ubuntu)`
-
-**Tools**  
-`STM32CubeIDE` · `VS Code` · `Git / GitHub` · `IBM Rhapsody` · `StarUML`
-
-**Certifications**  
-`AWS Certified Cloud Practitioner (2025)`
-
----
-
-📧 **Contact** — [hermann8hesse@gmail.com](mailto:hermann8hesse@gmail.com)
+## 연락
+hermann8hesse@gmail.com
